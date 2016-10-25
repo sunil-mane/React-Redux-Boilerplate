@@ -8,8 +8,10 @@ import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
 import App from './components/App';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import Users from './components/users';
+import Customer from './components/customer';
 
 const logger = createLogger();
 
@@ -27,9 +29,12 @@ ReactDOM.render(
         { /* Tell the Router to use our enhanced history */ }
 	    <Router history={history}>
 	      <Route path="/" component={App}>
-	        
-	      </Route>
-	    </Router>
+	        <IndexRoute component={Users}></IndexRoute>
+            <Route path="customers" component={Customer}></Route>
+            <Route path="users" component={Users}></Route>
+            </Route>
+	      </Router>
+	    
     </Provider>,
     document.getElementById('root')
 );

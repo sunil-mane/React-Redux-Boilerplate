@@ -1,16 +1,28 @@
-import React from 'react';
-import UserList from '../containers/user-list';
-import UserDetails from '../containers/user-detail';
-require('../../scss/style.scss');
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router'
 
-const App = () => (
-    <div>
-        <h2>User List</h2>
-        <UserList />
-        <hr />
-        <h2>User Details</h2>
-        <UserDetails />
-    </div>
-);
+
+class App extends React.Component {
+
+	render(){
+		return (
+
+				<div>
+			        <ul>
+			        	<li><Link to='users'>Users</Link></li>
+			        	<li><Link to='customers'>Customers</Link></li>
+			        </ul>
+			        {this.props.children}
+			    </div>
+
+			);
+	}
+
+}
+
+App.PropTypes = {
+	children: PropTypes.object.isRequired
+}
+
 
 export default App;
